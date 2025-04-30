@@ -82,14 +82,16 @@ export const ChatInput = ({ chatMessages, setChatMessages }) => {
           value={inputText}
           className='chat-input'
         />
-        <button
-        onClick={sendMessage}
-        className='send-button'
-        >Send</button>
-        <button
-        onClick={clearMessages}
-        className='clear-button'
-        >Clear</button>
+        <div className="button-group">
+          <button
+          onClick={sendMessage}
+          className='send-button'
+          >Send</button>
+          <button
+          onClick={clearMessages}
+          className='clear-button'
+          >Clear</button>
+        </div>
       </div>
     </>
   )

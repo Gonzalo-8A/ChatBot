@@ -1,0 +1,34 @@
+.language-switcher {
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.language-label {
+  margin-right: 0.5rem;
+}
+
+.language-button {
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-right: 0.5rem;
+  padding: 0.3rem 0.6rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+}
+
+.language-button.active {
+  background-color: #e0e0e0;
+}
+
+.language-flag {
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 0.5rem;
+  vertical-align: middle;
+}

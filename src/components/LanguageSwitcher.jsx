@@ -2,15 +2,7 @@ import { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import esFlag from "../assets/spain_flag.jpg";
 import gbFlag from "../assets/gb_flag.jpg";
-
-const flagStyle = {
-  width: "1.5rem",
-  height: "1.5rem",
-  borderRadius: "50%",
-  objectFit: "cover",
-  marginRight: "0.5rem",
-  verticalAlign: "middle"
-};
+import './LanguageSwitcher.css';
 
 const languages = [
   { code: "en", label: "English", flag: gbFlag },
@@ -31,24 +23,15 @@ export function LanguageSwitcher() {
   }, [i18n.language]);
 
   return (
-    <div style={{ marginBottom: "1rem" }}>
-      <label style={{ marginRight: "0.5rem" }}>Idioma:</label>
+    <div className="language-switcher">
+      <label className="language-label">Idioma:</label>
       {languages.map((lang) => (
         <button
           key={lang.code}
           onClick={() => handleLanguageChange(lang.code)}
-          style={{
-            backgroundColor: language === lang.code ? "#e0e0e0" : "white",
-            border: "1px solid #ccc",
-            borderRadius: "5px",
-            marginRight: "0.5rem",
-            padding: "0.3rem 0.6rem",
-            cursor: "pointer",
-            display: "inline-flex",
-            alignItems: "center"
-          }}
+          className={`language-button ${language === lang.code ? "active" : ""}`}
         >
-          <img src={lang.flag} alt={lang.label} style={flagStyle} />
+          <img src={lang.flag} alt={lang.label} className="language-flag" />
           {lang.label}
         </button>
       ))}
