@@ -9,7 +9,6 @@
 
 @media (max-width: 505px) {
   .app-container{
-    height: calc(100vh - 3rem - env(safe-area-inset-bottom, 0px));
-    overflow-y: auto;
+    height: calc(100vh - 6rem - env(safe-area-inset-bottom, 0px));
   }
 }
