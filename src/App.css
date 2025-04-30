@@ -2,14 +2,14 @@
   max-width: 700px;
   min-width: 320px;
   margin: 1.5rem auto;
-  height: 100vh;
+  height: calc(100vh - 3rem);
   display: flex;
   flex-direction: column;
 }
 
 @media (max-width: 505px) {
   .app-container{
-    height: calc(100vh - env(safe-area-inset-bottom, 0px));
+    height: calc(100vh - 3rem - env(safe-area-inset-bottom, 0px));
     overflow-y: auto;
   }
 }
