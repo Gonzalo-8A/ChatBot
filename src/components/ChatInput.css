@@ -1,0 +1,41 @@
+.input-container{
+  display: flex;
+  width: 100%;
+  margin: 1.5rem 0;
+
+}
+
+.chat-input {
+  font-size: 15px;
+  padding: 12px 15px;
+  border-width: 1px;
+  border-radius: 10px;
+  margin-right: 10px;
+  flex-grow: 1;
+}
+
+.send-button {
+  background-color: rgb(25, 135, 84);
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  font-size: 15px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.clear-button {
+  background-color: rgb(210, 209, 209);
+  color: rgb(0, 0, 0);
+  border: none;
+  padding: 12px 20px;
+  font-size: 15px;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-left: 0.5rem;
+}
+
+.loading-spinner {
+  height: 45px;
+  margin: -15px;
+}

@@ -1,0 +1,53 @@
+{
+  "greetings": {
+    "hello": "¡Hola! ¿En qué puedo ayudarte?",
+    "how_are_you": "¡Estoy genial! ¿En qué puedo ayudarte?",
+    "thanks": "¡De nada! Avísame si necesitas ayuda con algo más.",
+    "goodbye": "¡Hasta luego! Pasa un buen día 😊."
+  },
+  "coin_throw": {
+    "heads": "¡Claro! Salió cara.",
+    "tails": "¡Claro! Salió cruz."
+  },
+  "dice_throw": {
+    "result": "¿Claro! Salió el número {{number}}."
+  },
+  "today.date": "Hoy es {{day}} de {{month}}.",
+  "months": {
+    "0": "enero",
+    "1": "febrero",
+    "2": "marzo",
+    "3": "abril",
+    "4": "mayo",
+    "5": "junio",
+    "6": "julio",
+    "7": "agosto",
+    "8": "septiembre",
+    "9": "octubre",
+    "10": "noviembre",
+    "11": "diciembre"
+  },
+  "jokes": {
+    "atoms": "¿Por qué los científicos no confían en los átomos? ¡Porque lo componen todo!",
+    "scarecrow": "¿Por qué el espantapájaros ganó un premio? ¡Porque era destacado en su campo!",
+    "spaghetti": "¿Cómo llamas a una pasta falsa? ¡Un impasta!",
+    "pterodactyl": "¿Por qué no puedes oír a un pterodáctilo ir al baño? Porque la ‘P’ es silenciosa.",
+    "math_book": "¿Por qué el libro de matemáticas parecía triste? Porque tenía demasiados problemas.",
+    "anti_gravity": "Estoy leyendo un libro sobre antigravedad. ¡Es imposible dejarlo!"
+  },
+  "misc": {
+    "unique_id": "¡Claro! Aquí tienes tu id: {{id}}."
+  },
+  "math": {
+    "result": "El resultado es {{result}}.",
+    "error": "Lo siento, no he podido calcular eso. Asegúrate de que sea una expresión matemática válida."
+  },
+  "error": {
+    "video_not_found": "Lo siento, no pude encontrar ese vídeo."
+  },
+  "default": {
+    "unknown": "Lo siento, no entiendo eso. Actualmente solo sé lanzar una moneda, tirar un dado, decirte la fecha de hoy, contarte un chiste, resolver una operación matemática o buscar una canción o vídeo en YouTube. ¡Dime cómo te ayudo!",
+    "empty": "Parece que tu mensaje está vacío. Por favor, escribe algo y te responderé."
+  },
+  "Playing": "Sonando"
+}
