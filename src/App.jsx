@@ -8,12 +8,12 @@ import ChatMessages from './components/ChatMessages';
 import './App.css';
 
 function App() {
-  const [chatMessages, setChatMessages] = useState([])
+  const [chatMessages, setChatMessages] = useState([]);
 
   return (
     <I18nextProvider i18n={i18n}>
       <div className="app-container">
-        <LanguageSwitcher />
+      <LanguageSwitcher />
         <ChatMessages chatMessages={chatMessages} />
         <ChatInput chatMessages={chatMessages} setChatMessages={setChatMessages} />
       </div>

@@ -19,8 +19,13 @@ export function LanguageSwitcher() {
   };
 
   useEffect(() => {
-    setLanguage(i18n.language);
-  }, [i18n.language]);
+    const browserLang = navigator.language || navigator.userLanguage;
+    const shortLang = browserLang.split("-")[0];
+    const supportedLangs = ["en", "es"];
+    const initialLang = supportedLangs.includes(shortLang) ? shortLang : "en";
+    i18n.changeLanguage(initialLang);
+    setLanguage(initialLang);
+  }, [i18n]);
 
   return (
     <div className="language-switcher">
