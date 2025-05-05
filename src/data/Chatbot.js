@@ -14,6 +14,7 @@ const phraseToIntent = {
     "date": "date",
     "tell me a joke": "joke",
     "joke": "joke",
+    "play": "music",
     "play music": "music",
     "i want": "music",
     "put on": "music",
@@ -35,6 +36,7 @@ const phraseToIntent = {
     "fecha": "date",
     "cuéntame un chiste": "joke",
     "chiste": "joke",
+    "pon": "music",
     "pon música": "music",
     "quiero": "music",
     "escuchar": "music",
@@ -130,7 +132,7 @@ export const Chatbot = {
 
   getResponse(message) {
     if (!message) return this.emptyMessageResponse;
-    const normalized = message.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    const normalized = message.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").trim();
 
     for (const lang in phraseToIntent) {
       for (const phrase in phraseToIntent[lang]) {
