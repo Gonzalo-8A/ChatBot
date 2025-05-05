@@ -20,6 +20,10 @@
   align-items: center;
 }
 
+.es {
+  margin-right: 1rem;
+}
+
 .language-button.active {
   background-color: #e0e0e0;
 }

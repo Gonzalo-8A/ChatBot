@@ -29,7 +29,7 @@ export function LanguageSwitcher() {
         <button
           key={lang.code}
           onClick={() => handleLanguageChange(lang.code)}
-          className={`language-button ${language === lang.code ? "active" : ""}`}
+          className={`language-button ${lang.code} ${language === lang.code ? "active" : ""}`}
         >
           <img src={lang.flag} alt={lang.label} className="language-flag" />
           {lang.label}
