@@ -6,3 +6,9 @@
   scrollbar-width: none;
   -ms-overflow-style: none;
 }
+
+@media (max-width: 505px) {
+  .chat-messages-container{
+    padding: 1.5rem;
+  }
+}
