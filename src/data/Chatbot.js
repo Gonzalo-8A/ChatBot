@@ -2,88 +2,101 @@
 
 import { searchYouTube } from "../helpers/searchYoutube.js";
 
+const phraseToIntent = {
+  en: {
+    "hello": "greet",
+    "hi": "greet",
+    "hey": "greet",
+    "how are you": "ask_status",
+    "flip a coin": "coin",
+    "roll a dice": "dice",
+    "what is the date today": "date",
+    "date": "date",
+    "tell me a joke": "joke",
+    "joke": "joke",
+    "play music": "music",
+    "i want": "music",
+    "put on": "music",
+    "listen to": "music",
+    "thank": "thanks",
+    "goodbye bye": "goodbye",
+    "give me a unique id": "uuid"
+  },
+  es: {
+    "hola": "greet",
+    "buenas": "greet",
+    "cómo estás": "ask_status",
+    "lanzar una moneda": "coin",
+    "moneda": "coin",
+    "tirar un dado": "dice",
+    "dado": "dice",
+    "qué día es hoy": "date",
+    "hoy": "date",
+    "fecha": "date",
+    "cuéntame un chiste": "joke",
+    "chiste": "joke",
+    "pon música": "music",
+    "quiero": "music",
+    "escuchar": "music",
+    "gracias": "thanks",
+    "adiós": "goodbye",
+    "dame un id único": "uuid"
+  }
+};
+
+const intentResponses = {
+  greet: () => ({ translationKey: "greetings.hello" }),
+  ask_status: () => ({ translationKey: "greetings.how_are_you" }),
+  coin: () => ({
+    translationKey: Math.random() < 0.5 ? "coin_throw.heads" : "coin_throw.tails"
+  }),
+  dice: () => {
+    const number = Math.floor(Math.random() * 6) + 1;
+    return { translationKey: "dice_throw.result", variables: { number } };
+  },
+  date: () => {
+    const now = new Date();
+    return {
+      translationKey: "today.date",
+      variables: {
+        month: `months.${now.getMonth()}`,
+        day: now.getDate()
+      }
+    };
+  },
+  joke: () => {
+    const jokeKey = Chatbot.jokes[Math.floor(Math.random() * Chatbot.jokes.length)];
+    return { translationKey: jokeKey };
+  },
+  music: (msg) => Chatbot.defaultResponses["play music"](msg),
+  thanks: () => ({ translationKey: "greetings.thanks" }),
+  goodbye: () => ({ translationKey: "greetings.goodbye" }),
+  uuid: () => ({
+    translationKey: "misc.unique_id",
+    variables: { id: crypto.randomUUID() }
+  })
+};
+
 export const Chatbot = {
   defaultResponses: {
-    "hello": () => ({ translationKey: "greetings.hello" }),
-    "hi": () => ({ translationKey: "greetings.hello" }),
-    "hey": () => ({ translationKey: "greetings.hello" }),
-    "how are you": () => ({ translationKey: "greetings.how_are_you" }),
-    "flip a coin": function () {
-      const isHeads = Math.random() < 0.5;
-      return {
-        translationKey: isHeads ? "coin_throw.heads" : "coin_throw.tails"
-      };
-    },
-    "roll a dice": function () {
-      const number = Math.floor(Math.random() * 6) + 1;
-      return {
-        translationKey: "dice_throw.result",
-        variables: { number }
-      };
-    },
-    "what is the date today": function () {
-      const now = new Date();
-      const monthIndex = now.getMonth();
-      return {
-        translationKey: "today.date",
-        variables: {
-          month: `months.${monthIndex}`,
-          day: now.getDate()
-        }
-      };
-    },
-    "date": function () {
-      const now = new Date();
-      const monthIndex = now.getMonth();
-      return {
-        translationKey: "today.date",
-        variables: {
-          month: `months.${monthIndex}`,
-          day: now.getDate()
-        }
-      };
-    },
-    "tell me a joke": function () {
-      const jokeKey = Chatbot.jokes[Math.floor(Math.random() * Chatbot.jokes.length)];
-      return { translationKey: jokeKey };
-    },
-    "joke": function () {
-      const jokeKey = Chatbot.jokes[Math.floor(Math.random() * Chatbot.jokes.length)];
-      return { translationKey: jokeKey };
-    },
     "play music": async function (message) {
-      const keywords = ["play", "i want", "put on", "listen to"];
+      const keywords = ["play", "i want", "put on", "listen to", "pon", "quiero", "escuchar"];
       let query = message.toLowerCase();
-
-      for (const word of keywords) {
-        query = query.replace(word, "");
-      }
+      for (const word of keywords) query = query.replace(word, "");
       query = query.trim();
       const capitalizedQuery = query.replace(/\b\w/g, (char) => char.toUpperCase());
-
       try {
         const { videoId, title } = await searchYouTube(query);
         const embedUrl = `https://www.youtube.com/embed/${videoId}`;
-        console.log(title)
         const html = `
           <div style="margin-bottom: 10px">🎵 <strong>${title || capitalizedQuery}</strong></div>
-          <iframe width="100%" height="315" src="${embedUrl}?autoplay=1" title="YouTube video player" frameborder="0"
+          <iframe width="100%" height="315" src="${embedUrl}?autoplay=1" frameborder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-          </iframe>
-        `;
+          </iframe>`;
         return { message: html };
-      // eslint-disable-next-line no-unused-vars
-      } catch (error) {
+      } catch {
         return { translationKey: "errors.video_not_found", variables: { query } };
       }
-    },
-    "thank": () => ({ translationKey: "greetings.thanks" }),
-    "goodbye bye": () => ({ translationKey: "greetings.goodbye" }),
-    "give me a unique id": function () {
-      return {
-        translationKey: "misc.unique_id",
-        variables: { id: crypto.randomUUID() }
-      };
     }
   },
 
@@ -101,90 +114,47 @@ export const Chatbot = {
   unsuccessfulResponse: { translationKey: "default.unknown" },
   emptyMessageResponse: { translationKey: "default.empty" },
 
-  addResponses: function (additionalResponses) {
+  addResponses(additionalResponses) {
     this.additionalResponses = {
       ...this.additionalResponses,
-      ...additionalResponses,
+      ...additionalResponses
     };
   },
 
   async getResponseAsync(message) {
-    // Ejecutar getResponse, esperando si devuelve Promise
     const result = this.getResponse(message);
     const resolved = result instanceof Promise ? await result : result;
-    // Simular delay
     await new Promise((r) => setTimeout(r, 1000));
     return resolved;
   },
 
-  getResponse: function (message) {
+  getResponse(message) {
     if (!message) return this.emptyMessageResponse;
-    const lowerCaseMessage = message.toLowerCase();
-    if (
-      lowerCaseMessage.includes("play") ||
-      lowerCaseMessage.includes("i want") ||
-      lowerCaseMessage.includes("put on") ||
-      lowerCaseMessage.includes("listen to")
-    ) {
-      return this.defaultResponses["play music"](message);
-    }
-    // Procesar matemáticas
-    const normalized = this.normalizeMathPhrase(message);
-    if (this.isMathExpression(normalized)) {
-      try {
-        const result = new Function(`return ${normalized}`)();
-        return {
-          translationKey: "math.result",
-          variables: { result }
-        };
-      } catch {
-        return { translationKey: "math.error" };
+    const normalized = message.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+
+    for (const lang in phraseToIntent) {
+      for (const phrase in phraseToIntent[lang]) {
+        if (normalized.includes(phrase)) {
+          const intent = phraseToIntent[lang][phrase];
+          const responseFn = intentResponses[intent];
+          return typeof responseFn === "function" ? responseFn(message) : responseFn;
+        }
       }
     }
+
     const responses = {
       ...this.defaultResponses,
-      ...this.additionalResponses,
+      ...this.additionalResponses
     };
-    const { ratings, bestMatchIndex } = this.stringSimilarity(
-      message,
-      Object.keys(responses)
-    );
+    const { ratings, bestMatchIndex } = this.stringSimilarity(message, Object.keys(responses));
     const bestRating = ratings[bestMatchIndex].rating;
-    if (bestRating <= 0.3) {
-      return this.unsuccessfulResponse;
-    }
+    if (bestRating <= 0.3) return this.unsuccessfulResponse;
     const key = ratings[bestMatchIndex].target;
     const resp = responses[key];
-    const result = typeof resp === "function" ? resp(message) : resp;
-    return result;
+    return typeof resp === "function" ? resp(message) : resp;
   },
 
-  isMathExpression: function (msg) {
-    return /^[\d+\-*/().\s]+$/.test(msg);
-  },
-
-  normalizeMathPhrase: function (message) {
-    let expr = message.toLowerCase();
-    expr = expr
-      .replace(/what is|what's|whats/gi, "")
-      .replace(/plus/gi, "+")
-      .replace(/minus/gi, "-")
-      .replace(/times|multiplied by/gi, "*")
-      .replace(/divided by|over/gi, "/")
-      .replace(/equals|equal to/gi, "=");
-    const wordToNumber = {
-      zero: 0, one: 1, two: 2, three: 3, four: 4,
-      five: 5, six: 6, seven: 7, eight: 8, nine: 9,
-      ten: 10, eleven: 11, twelve: 12, thirteen: 13, fourteen: 14,
-      fifteen: 15, sixteen: 16, seventeen: 17, eighteen: 18, nineteen: 19, twenty: 20,
-    };
-    for (const word in wordToNumber) {
-      expr = expr.replace(new RegExp(`\\b${word}\\b`, 'gi'), wordToNumber[word]);
-    }
-    return expr.trim();
-  },
-
-  compareTwoStrings: function (first, second) {
+  compareTwoStrings(first, second) {
     first = first.replace(/\s+/g, "");
     second = second.replace(/\s+/g, "");
     if (first === second) return 1;
@@ -206,7 +176,7 @@ export const Chatbot = {
     return (2.0 * intersection) / (first.length + second.length - 2);
   },
 
-  stringSimilarity: function (mainString, targets) {
+  stringSimilarity(mainString, targets) {
     const ratings = [];
     let bestIndex = 0;
     for (let i = 0; i < targets.length; i++) {
@@ -216,10 +186,9 @@ export const Chatbot = {
       if (rating > ratings[bestIndex].rating) bestIndex = i;
     }
     return { ratings, bestMatchIndex: bestIndex };
-  },
+  }
 };
 
-// UMD export
 (function (root, factory) {
   if (typeof define === "function" && define.amd) {
     define([], factory);
