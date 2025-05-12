@@ -2,6 +2,11 @@
   box-sizing: border-box;
 }
 
+html {
+height: 100vh;
+width: 100vw;
+}
+
 body {
   font-family: Arial;
   margin: 0;

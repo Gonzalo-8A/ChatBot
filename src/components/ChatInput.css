@@ -1,14 +1,14 @@
 .input-container{
   display: flex;
   width: 100%;
-  margin-top: 1.5rem;
+  margin-top: 1rem;
   padding: 0 1rem;
 }
 
 .chat-input {
   font-size: 15px;
   padding: 12px 15px;
-  border-width: 1px;
+  border: 1px solid black;
   border-radius: 10px;
   margin-right: 10px;
   flex-grow: 1;

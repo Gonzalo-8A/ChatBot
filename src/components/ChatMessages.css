@@ -10,5 +10,6 @@
 @media (max-width: 505px) {
   .chat-messages-container{
     padding: 1.5rem;
+    margin-bottom: 4rem;
   }
 }

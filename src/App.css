@@ -8,7 +8,7 @@
 }
 
 @media (max-width: 505px) {
-  .app-container{
+  /* .app-container{
     height: calc(100vh - 10rem - env(safe-area-inset-bottom, 0px));
-  }
+  } */
 }
