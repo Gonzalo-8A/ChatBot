@@ -1,8 +1,12 @@
 .language-switcher {
-  /* margin-bottom: 1rem; */
   display: flex;
   justify-content: flex-end;
   align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: white;
+  margin: 1.5rem 0;
 }
 
 .language-label {

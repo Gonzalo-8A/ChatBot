@@ -1,7 +1,6 @@
 .input-container{
   display: flex;
   width: 100%;
-  margin-top: 1rem;
   padding: 0 1rem;
 }
 
@@ -50,8 +49,6 @@
     flex-direction: column;
     align-items: center;
     padding: 0 1rem;
-    position: fixed;
-    bottom: 0;
     margin-bottom: 1rem;
   }
 
