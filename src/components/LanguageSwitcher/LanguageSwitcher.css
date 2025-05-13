@@ -28,7 +28,7 @@
 .language-button.active {
   background-color: var(--active-bg-color);
   color: var(--active-color);
-  transition: background-color 0.3s, color 0.3s, border 0.3s;
+  transition: background-color 0.3s, border 0.3s;
 }
 
 .language-flag {
