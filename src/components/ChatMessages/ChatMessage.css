@@ -15,7 +15,8 @@
 }
 
 .chat-message-text{
-  background-color: rgb(238, 238, 238);
+  background-color: var(--chat-bg);
+  color: var(--text-color);
   padding: 15px 20px;
   border-radius: 10px;
   max-width: 300px;
@@ -23,20 +24,25 @@
   overflow-wrap: break-word;
   display: flex;
   flex-direction: column;
+  transition: background-color 0.3s, color 0.3s;
 }
 
 .chat-message-text:has(iframe){
   max-width: 360px;
 }
 
-/* .chat-message-profile.robot{
-  width: 45px;
-  border-radius: 50%;
-} */
+.chat-message-text iframe{
+  border-radius: 1.5rem;
+}
 
 .chat-message-profile{
   width: 45px;
   border-radius: 50%;
+}
+
+.chat-message-profile.robot{
+  filter: var(--filter);
+  transition: filter 0.3s;
 }
 
 .chat-message-time {

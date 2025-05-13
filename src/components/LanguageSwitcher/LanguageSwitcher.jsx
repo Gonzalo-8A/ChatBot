@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
-import esFlag from "../assets/spain_flag.jpg";
-import gbFlag from "../assets/gb_flag.jpg";
+import esFlag from "../../assets/spain_flag.jpg";
+import gbFlag from "../../assets/gb_flag.jpg";
 import './LanguageSwitcher.css';
 
 const languages = [
@@ -9,7 +9,7 @@ const languages = [
   { code: "es", label: "Español", flag: esFlag },
 ];
 
-export function LanguageSwitcher() {
+export default function LanguageSwitcher() {
   const { i18n } = useTranslation();
   const [language, setLanguage] = useState(i18n.language);
 

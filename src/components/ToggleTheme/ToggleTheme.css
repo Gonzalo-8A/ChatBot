@@ -1,0 +1,31 @@
+.theme-toggle {
+  width: 50px;
+  height: 26px;
+  background-color: var(--input-bg);
+  border: 0px solid var(--text-color);
+  border-radius: 20px;
+  margin:0 0.4rem;
+  cursor: pointer;
+  position: relative;
+  transition: background-color 0.3s;
+}
+
+.toggle-thumb {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  position: absolute;
+  top: 2px;
+  font-size: 1rem;
+  transition: left 0.3s;
+}
+
+.toggle-thumb.left {
+  left: 1px;
+}
+
+.toggle-thumb.right {
+  left: 25px;
+}

@@ -1,7 +1,7 @@
 import dayjs from 'dayjs';
 import { useState } from 'react';
-import { Chatbot } from '../data/Chatbot.js';
-import LoadingImg from '../assets/loading-spinner.gif';
+import { Chatbot } from '../../data/Chatbot.js';
+import LoadingImg from '../../assets/loading-spinner.gif';
 import './ChatInput.css';
 
 export const ChatInput = ({ chatMessages, setChatMessages }) => {

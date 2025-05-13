@@ -1,8 +1,8 @@
 import { useTranslation } from "react-i18next";
 import { useEffect, useState } from "react";
 import dayjs from "dayjs";
-import RobotProfileImage from "../assets/robot_tag-modified.png";
-import UserProfileImage from "../assets/user.png";
+import RobotProfileImage from "../../assets/robot_tag-modified.png";
+import UserProfileImage from "../../assets/user.png";
 import "./ChatMessage.css";
 
 export function ChatMessage({ message, sender, time }) {

@@ -2,13 +2,39 @@
   box-sizing: border-box;
 }
 
+:root {
+  --bg-color: #ffffff;
+  --text-color: #000000;
+  --input-bg: #f0f0f0;
+  --input-text: #000000;
+  --chat-bg: #eeeeee;
+  --active-bg-color: #b3b3b3;
+  --filter: none;
+  --container-color: #ffffff;
+}
+
+[data-theme="dark"] {
+  --bg-color: #121212;
+  --text-color: #ffffff;
+  --input-bg: #1e1e1e;
+  --input-text: #ffffff;
+  --active-bg-color: #3f3f3f;
+  --active-color: #ffffff;
+  --chat-bg:#373737;
+  --filter: invert(1) brightness(0.85) contrast(0.85);
+  --container-color: #1e1e1e85;
+}
+
 html, body {
-height: 100%;
-width: 100vw;
+  height: 100%;
+  width: 100vw;
 }
 
 body {
   font-family: Arial;
   margin: 0;
   padding: 0;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.3s, color 0.3s;
 }
