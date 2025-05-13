@@ -1,6 +1,6 @@
 .theme-toggle {
-  width: 50px;
-  height: 26px;
+  width: 3.5rem;
+  height: 2.3rem;
   background-color: var(--input-bg);
   border: 0px solid var(--text-color);
   border-radius: 20px;
@@ -11,8 +11,8 @@
 }
 
 .toggle-thumb {
-  width: 22px;
-  height: 22px;
+  width: 2rem;
+  height: 2rem;
   border-radius: 50%;
   background-color: var(--bg-color);
   color: var(--text-color);
@@ -23,9 +23,11 @@
 }
 
 .toggle-thumb.left {
-  left: 1px;
+  left: 4px;
+  font-size: 1.5rem;
 }
 
 .toggle-thumb.right {
-  left: 25px;
+  left: 20px;
+  font-size: 1.5rem;
 }
