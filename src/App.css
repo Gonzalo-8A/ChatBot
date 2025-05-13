@@ -7,8 +7,8 @@
   flex-direction: column;
 }
 
-@media (max-width: 505px) {
-  /* .app-container{
-    height: calc(100vh - 10rem - env(safe-area-inset-bottom, 0px));
-  } */
+@supports (height: 100dvh) {
+  .app-container{
+    height: 100dvh;
+  }
 }
