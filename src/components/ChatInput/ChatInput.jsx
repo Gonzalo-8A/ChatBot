@@ -46,7 +46,7 @@ export const ChatInput = ({ chatMessages, setChatMessages }) => {
     setChatMessages([
       ...newChatMessages,
       {
-        message: response,  // No envolvemos 'response' en otro objeto
+        message: response,
         sender: 'robot',
         id: crypto.randomUUID(),
         time: dayjs().valueOf()

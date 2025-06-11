@@ -1,5 +1,4 @@
 /* eslint-disable no-undef */
-// src/components/ThemeToggle.jsx
 import { useEffect, useState } from "react";
 import "./ToggleTheme.css";
 

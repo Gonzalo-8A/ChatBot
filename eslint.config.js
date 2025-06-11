@@ -10,7 +10,7 @@ export default [
     files: ['**/*.{js,jsx}'],
     languageOptions: {
       ecmaVersion: 2020,
-      // Aquí cambiamos `globals.browser` a `globals.node` para reconocer el entorno de Node.js
+
       globals: globals.node, 
       parserOptions: {
         ecmaVersion: 'latest',
